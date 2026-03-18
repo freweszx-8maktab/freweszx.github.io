@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Панель Учителя – 8-Maktab</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.teacher-dashboard {
+    display: flex;
+}
+.sidebar {
+    position: fixed;
+    width: 220px;
+    height: 100vh;
+    background: #1f2a44;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar h2 {
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+    font-size: 18px;
+    border-bottom: 1px solid #2f3b57;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #2f3b57;
+}
+.sidebar ul li.active,
+.sidebar ul li:hover {
+    background: #377dff;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 220px;
+    flex: 1;
+    padding: 30px;
+}
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+table th {
+    background: #377dff;
+    color: white;
+}
+table tr:hover {
+    background: #f1f1f1;
+}
+
+/* Editable оценки */
+td[contenteditable="true"] {
+    background: #fefefe;
+    cursor: text;
+}
+
+/* Кнопки */
+.btn {
+    padding: 5px 12px;
+    background: #377dff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #285ec7;
+}
+
+/* Статусы домашки */
+td.status-sdan {
+    color: green;
+    font-weight: bold;
+}
+td.status-ne-sdan {
+    color: red;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="teacher-dashboard">
+    <div class="sidebar">
+        <h2>Учитель</h2>
+        <ul>
+            <li class="active" onclick="showTab('dashboard', event)">🏠 Панель</li>
+            <li onclick="showTab('grades', event)">📊 Оценки</li>
+            <li onclick="showTab('homework', event)">📝 Домашние задания</li>
+            <li onclick="showTab('students', event)">👨‍🎓 Ученики</li>
+            <li onclick="showTab('settings', event)">⚙️ Настройки</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <!-- Панель -->
+        <div id="dashboard" class="tab-content active">
+            <h1>Добро пожаловать, Учитель!</h1>
+            <p>Здесь вы видите общую информацию о школе, классах и учениках.</p>
+        </div>
+
+        <!-- Оценки -->
+        <div id="grades" class="tab-content">
+            <h2>📊 Оценки учеников</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Имя ученика</th>
+                        <th>Математика</th>
+                        <th>Русский</th>
+                        <th>История</th>
+                        <th>Английский</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody id="gradesBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Домашние задания -->
+        <div id="homework" class="tab-content">
+            <h2>📝 Домашние задания</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ученик</th>
+                        <th>Предмет</th>
+                        <th>Задание</th>
+                        <th>Срок</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody id="homeworkBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Ученики -->
+        <div id="students" class="tab-content">
+            <h2>👨‍🎓 Список учеников</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Логин</th>
+                        <th>Пароль</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Настройки -->
+        <div id="settings" class="tab-content">
+            <h2>⚙️ Настройки школы</h2>
+            <p>Здесь можно изменить информацию о школе, классы и т.д.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Смена табов
+function showTab(tab, event){
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+
+// Данные
+const students = [
+    {name: "Иван Иванов", login: "ivan123", password: "pass1"},
+    {name: "Мария Петрова", login: "maria456", password: "pass2"},
+    {name: "Алексей Сидоров", login: "aleksey789", password: "pass3"}
+];
+
+const grades = [
+    {name: "Иван Иванов", math: 5, rus: 4, hist: 3, eng: 5},
+    {name: "Мария Петрова", math: 4, rus: 5, hist: 4, eng: 4},
+    {name: "Алексей Сидоров", math: 3, rus: 4, hist: 5, eng: 3}
+];
+
+const homework = [
+    {student: "Иван Иванов", subject: "Математика", task: "Стр. 23 упр.5", due: "20.03", status: "Сдано"},
+    {student: "Мария Петрова", subject: "Русский", task: "Сочинение на тему...", due: "21.03", status: "Не сдано"},
+    {student: "Алексей Сидоров", subject: "История", task: "Презентация", due: "22.03", status: "Сдано"}
+];
+
+// Вставка учеников
+const studentsBody = document.getElementById("studentsBody");
+students.forEach(s => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${s.name}</td>
+        <td>${s.login}</td>
+        <td class="password">•••••• <button onclick="showPass(this, '${s.password}')">Показать</button></td>
+        <td><button class="btn" onclick="alert('Student Maria,Usen,Radmir ${s.name}')">Просмотр</button></td>
+    `;
+    studentsBody.appendChild(tr);
+});
+
+// Вставка оценок
+const gradesBody = document.getElementById("gradesBody");
+grades.forEach(g => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${g.name}</td>
+        <td contenteditable="true">${g.math}</td>
+        <td contenteditable="true">${g.rus}</td>
+        <td contenteditable="true">${g.hist}</td>
+        <td contenteditable="true">${g.eng}</td>
+        <td><button class="btn" onclick="saveGrade(this)">Сохранить</button></td>
+    `;
+    gradesBody.appendChild(tr);
+});
+
+// Вставка домашки
+const homeworkBody = document.getElementById("homeworkBody");
+homework.forEach(h => {
+    const tr = document.createElement("tr");
+    const statusClass = h.status === "Сдано" ? "status-sdan" : "status-ne-sdan";
+    tr.innerHTML = `
+        <td>${h.student}</td>
+        <td>${h.subject}</td>
+        <td>${h.task}</td>
+        <td>${h.due}</td>
+        <td class="${statusClass}">${h.status}</td>
+    `;
+    homeworkBody.appendChild(tr);
+});
+
+// Функции
+function saveGrade(btn){
+    const tr = btn.closest("tr");
+    const cells = tr.querySelectorAll("td");
+    const studentName = cells[0].innerText;
+    const math = cells[1].innerText;
+    const rus = cells[2].innerText;
+    const hist = cells[3].innerText;
+    const eng = cells[4].innerText;
+    alert(`Оценки для ${studentName} сохранены:\nМатематика: ${math}\nРусский: ${rus}\nИстория: ${hist}\nАнглийский: ${eng}`);
+}
+
+function showPass(btn, pass){
+    const td = btn.parentElement;
+    td.innerHTML = pass;
+}
+</script>
+</body>
+</html>

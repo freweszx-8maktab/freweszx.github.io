@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Регистрация</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+</style>
+<body class="auth-body">
+
+<div class="auth-box">
+
+<h2>📝 Регистрация</h2>
+
+<input type="text" id="name" placeholder="Имя">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Пароль">
+
+<select id="role">
+<option value="student">👨‍🎓 Ученик</option>
+<option value="teacher">👨‍🏫 Учитель</option>
+<option value="admin">🛠 Админ</option>
+</select>
+
+<button onclick="register()">Создать аккаунт</button>
+
+<p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+
+</div>
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>

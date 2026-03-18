@@ -1,0 +1,142 @@
+/* СБРОС */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* КОНТЕЙНЕР */
+.container {
+    max-width: 420px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* ЗАГОЛОВКИ */
+h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* КАРТОЧКИ */
+.card, .exam, .network, .trainer, .app-card, .progress-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: fadeUp 0.5s ease;
+}
+
+/* КНОПКИ */
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* ЭФФЕКТЫ КНОПКИ */
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ОСНОВНАЯ КНОПКА */
+.btn, .start {
+    background: #00ff88;
+    color: black;
+}
+
+/* ВТОРИЧНАЯ */
+.result {
+    background: orange;
+}
+
+/* PREMIUM */
+.premium {
+    border: 2px solid gold;
+}
+
+/* FREE */
+.free {
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+/* ТАБЫ */
+.tabs, .categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.tabs span, .categories span {
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tabs .active, .categories .active {
+    background: white;
+    color: black;
+}
+
+/* ПРОГРЕСС */
+.bar {
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.bar div {
+    height: 100%;
+    background: #00ff88;
+    border-radius: 10px;
+    animation: load 1s ease;
+}
+
+/* ЛОГО */
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* АНИМАЦИИ */
+@keyframes fadeUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes load {
+    from { width: 0; }
+}

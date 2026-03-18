@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дневник</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Общие стили */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+
+    /* Хедер */
+    header {
+      background: #4a90e2;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 24px;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Контейнер */
+    .container {
+      padding: 30px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Таблица дневника */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadeIn 1s ease forwards;
+    }
+    th, td {
+      padding: 15px 20px;
+      text-align: center;
+    }
+    th {
+      background: #4a90e2;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    tr:nth-child(even) {
+      background: #f7f9fc;
+    }
+    tr:hover {
+      background: #e6f0ff;
+      transition: 0.3s;
+    }
+
+    /* Анимация появления */
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Оценки */
+    .grade {
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: white;
+      display: inline-block;
+      animation: pop 0.5s ease;
+    }
+    .grade-5 {background: #28a745;} /* Зеленый */
+    .grade-4 {background: #ffc107;} /* Желтый */
+    .grade-3 {background: #fd7e14;} /* Оранжевый */
+    .grade-2 {background: #dc3545;} /* Красный */
+    
+    @keyframes pop {
+      0% {transform: scale(0.5); opacity: 0;}
+      70% {transform: scale(1.2); opacity: 1;}
+      100% {transform: scale(1);}
+    }
+
+    /* Инфо блоки */
+    .info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 20px;
+    }
+    .info .card {
+      flex: 1 1 250px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeIn 1s ease forwards;
+    }
+    .info .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #4a90e2;
+    }
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Дневник</h1>
+    <nav>
+      <a href="index.html">🏠 Главная</a>
+      <a href="raspisanie.html">📅 Расписание</a>
+      <a href="domashka.html">📝 Домашние задания</a>
+      <a href="chat.html">💬 Чат</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <div class="info">
+      <div class="card">
+        <h3>Общая информация</h3>
+        <p>Ученики: 25</p>
+        <p>Средний балл: 4.2</p>
+        <p>Последнее обновление: 17.03.2026</p>
+      </div>
+      <div class="card">
+        <h3>Предстоящие события</h3>
+        <p>Контрольная по математике — 20.03</p>
+        <p>Проект по биологии — 22.03</p>
+        <p>Экскурсия — 25.03</p>
+      </div>
+      <div class="card">
+        <h3>Примечания</h3>
+        <p>Все домашние задания должны быть сданы до конца недели.</p>
+        <p>Не забывать о подготовке к олимпиаде по информатике.</p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Предмет</th>
+          <th>Учитель</th>
+          <th>Оценки</th>
+          <th>Средний балл</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Математика</td>
+          <td>Иванов И.И.</td>
+          <td>
+            <span class="grade grade-5">5</span>
+            <span class="grade grade-4">4</span>
+            <span class="grade grade-5">5</span>
+          </td>
+          <td>4.7</td>
+        </tr>
+        <tr>
+          <td>Русский язык</td>
+          <td>Петрова А.С.</td>
+          <td>
+            <span class="grade grade-4">4</span>
+            <span class="grade grade-3">3</span>
+            <span class="grade grade-4">4</span>
+          </td>
+          <td>3.7</td>
+        </tr>
+        <tr>
+          <td>Физика</td>
+          <td>Сидоров П.П.</td>
+          <td>
+            <span class="grade grade-5">5</span>
+            <span class="grade grade-5">5</span>
+            <span class="grade grade-4">4</span>
+          </td>
+          <td>4.7</td>
+        </tr>
+        <tr>
+          <td>История</td>
+          <td>Кузнецова Е.В.</td>
+          <td>
+            <span class="grade grade-3">3</span>
+            <span class="grade grade-4">4</span>
+            <span class="grade grade-4">4</span>
+          </td>
+          <td>3.7</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>

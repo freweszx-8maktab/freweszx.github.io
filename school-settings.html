@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+    </style>
+    <div class="page">
+
+<h1>🏫 Настройки школы</h1>
+
+<div class="school-info-card">
+    <h2>Информация о школе</h2>
+    <label>Название школы:</label>
+    <input type="text" id="schoolName" value="Моя Школа">
+    
+    <label>Адрес:</label>
+    <input type="text" id="schoolAddress" value="г. Ташкент, ул. Ленина, 12">
+    
+    <label>Телефон:</label>
+    <input type="text" id="schoolPhone" value="+998 90 123 45 67">
+    
+    <label>Email:</label>
+    <input type="text" id="schoolEmail" value="info@school.uz">
+    
+    <label>Описание:</label>
+    <textarea id="schoolDesc">Добро пожаловать в нашу школу! Здесь лучшие преподаватели и комфортная среда для учеников.</textarea>
+    
+    <button onclick="saveSchoolInfo()">💾 Сохранить</button>
+</div>
+
+</div>
+
+<script src="js/school-settings.js"></script>
+</body>
+</html>

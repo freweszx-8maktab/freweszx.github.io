@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Родной язык | Тест | eMaktab</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+  </style>
+  <header>
+    <div class="logo">8-Maktab</div>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="dashboard.html">Панель</a>
+      <a href="pomosh.html">Помощь</a>
+      <a href="kontakt.html">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Родной язык</h1>
+    <p>Дата и время начала: <strong>05.03 в 12:00</strong></p>
+  </section>
+
+  <section class="quiz">
+    <div id="quiz-container">
+      <!-- Вопросы будут динамически вставлены -->
+    </div>
+    <button id="submit-btn">Завершить тест</button>
+    <div id="result" class="fade"></div>
+  </section>
+
+  <footer>
+    <p>© 2026 eMaktab. Все права защищены.</p>
+  </footer>
+
+  <script>
+    // Массив вопросов (пример 3, можно расширить до 15)
+    const questions = [
+      {
+        question: "Как пишется слово 'мама'?",
+        options: ["мама", "мамаа", "мамa", "мaма"],
+        answer: 0
+      },
+      {
+        question: "Выберите правильное окончание: 'Я ____ книгу.'",
+        options: ["читаю", "читал", "читает", "читать"],
+        answer: 0
+      },
+      {
+        question: "Выберите синоним к слову 'большой'.",
+        options: ["огромный", "малый", "тонкий", "низкий"],
+        answer: 0
+      },
+      // Здесь можно добавить еще 12 вопросов
+    ];
+
+    const container = document.getElementById('quiz-container');
+
+    function buildQuiz() {
+      const output = [];
+      questions.forEach((q, index) => {
+        const options = q.options.map((option, i) =>
+          `<label class="option">
+            <input type="radio" name="question${index}" value="${i}">
+            ${option}
+          </label>`
+        ).join('');
+        output.push(
+          `<div class="question fade">
+            <h3>${index + 1}. ${q.question}</h3>
+            <div class="options">${options}</div>
+          </div>`
+        );
+      });
+      container.innerHTML = output.join('');
+    }
+
+    buildQuiz();
+
+    const submitBtn = document.getElementById('submit-btn');
+    const result = document.getElementById('result');
+
+    submitBtn.addEventListener('click', () => {
+      let score = 0;
+      questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name=question${index}]:checked`);
+        if (selected && parseInt(selected.value) === q.answer) score++;
+      });
+      result.innerHTML = `Ваш результат: ${score} из ${questions.length}`;
+      result.classList.add('show');
+    });
+  </script>
+</body>
+</html>

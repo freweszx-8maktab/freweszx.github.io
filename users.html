@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>8-Maktab</title>
+</head>
+<body>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") no-repeat center center;
+    background-size: cover;
+
+    min-height: 100vh;
+}
+    </style>
+    <div class="page">
+
+<h1>👥 Пользователи Школы</h1>
+
+<div class="controls">
+    <input type="text" id="searchUser" placeholder="Поиск по имени или email">
+    <button onclick="addUser()">Добавить пользователя</button>
+</div>
+
+<table class="user-table" id="userTable">
+    <tr>
+        <th>Имя</th>
+        <th>Email</th>
+        <th>Роль</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+</table>
+
+</div>
+
+<script src="js/users.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8-Maktab</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="user-info">
+<span id="userName"></span>
+<button onclick="logout()">Выход</button>
+</div>
+  <div class="logo">8-Maktab</div>
+  <div class="nav">
+    <a href="./pomosh.html">Помощь</a>
+    <a href="#">Выход</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Левая панель -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="./pro.html">Оплата PRO</a></li>
+      <li> <a href="./sor-soch.html">Подготовка СОР/СОЧ</a></li>
+      <li><a href="./index.html">Моя школа</a></li>
+      <li> <a href="./apps.html"></a>Мой класс</li>
+      <li> <a href="./dashboard.html">Дневник</a></li>
+      <li> <a href="raspisanie.html">Расписание</a></li>
+      <li> <a href="domashka.html">Домашние задания</a></li>
+      <li> <a href="./chat.html">Чаты</a></li>
+    </ul>
+  </aside>
+
+  <!-- Основной контент -->
+  <main>
+
+    <h2>Сегодня</h2>
+
+    <div class="lessons">
+
+      <div class="lesson">
+        <span>1 урок</span>
+        <p>Всемирная история</p>
+        <small>8:00 - 8:45</small>
+      </div>
+
+      <div class="lesson">
+        <span>2 урок</span>
+        <p>Информатика</p>
+        <small>8:50 - 9:35</small>
+      </div>
+
+      <div class="lesson">
+        <span>3 урок</span>
+        <p>Химия</p>
+        <small>9:40 - 10:25</small>
+      </div>
+
+    </div>
+
+    <h2>Оценки</h2>
+
+    <div class="grades">
+      <div class="grade">Химия: 45/50</div>
+      <div class="grade">Алгебра: 22/25</div>
+      <div class="grade">История: 5</div>
+    </div>
+
+    <h2>Новости</h2>
+
+    <div class="news">
+      <p><b>Акция к Наврузу!</b></p>
+      <p>PRO-подписка по суперцене</p>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* МЕНЮ */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* ТАБЫ */
+.tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.tabs span {
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tabs .active {
+    background: white;
+    color: black;
+}
+
+/* ПОДТАБЫ */
+.subtabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.subtabs span {
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+.subtabs .active {
+    background: white;
+    color: black;
+}
+
+/* СЕТИ */
+.network {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 0.5s ease;
+}
+
+/* ЛОГО */
+.logo {
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* БОЛЬШИЕ */
+.network.big {
+    border: 2px solid gold;
+}
+
+/* АНИМАЦИЯ */
+@keyframes fadeUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

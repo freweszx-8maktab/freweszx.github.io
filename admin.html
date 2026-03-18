@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Админ</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<div class="user-info">
+<span id="userName"></span>
+<button onclick="logout()">Выход</button>
+</div>
+
+<div class="logo">8-Maktab</div>
+</header>
+
+<div class="container">
+
+<!-- меню -->
+<aside class="sidebar">
+<ul>
+<li><a href="admin.html" class="active">🏠 Панель</a></li>
+<li><a href="users.html">👨‍🎓 Пользователи</a></li>
+<li><a href="./school-settings.html">🏫 Школы</a></li>
+<li><a href="settings.htm">⚙️ Настройки</a></li>
+</ul>
+</aside>
+
+<!-- контент -->
+<main class="content">
+
+<h1>🛠 Админ панель</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>👨‍🎓 Пользователи</h3>
+<p>Управление аккаунтами</p>
+</div>
+
+<div class="card">
+<h3>🏫 Школы</h3>
+<p>Добавить школу</p>
+</div>
+
+<div class="card">
+<h3>⚙️ Настройки</h3>
+<p>Система</p>
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
